@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.conda/
+
+# Environment variables (contains API keys)
+.env
+secrets.local.json
+
+# Operator-private life-ops config. Friends copy tenant.example.yaml.
+# Jeffy / operators upload the real file to s3://$MEME_ASSETS_BUCKET/ops/tenant.yaml
+config/tenant.yaml
+
+# Operator spend ledger (tests use tests/fixtures/tech_spend.json)
+data/tech_spend.json
+
+# Local S3 fallbacks (canonical copies live in the bucket under ops/)
+data/usage/
+data/token_usage.jsonl
+data/x_activity/
+data/projects/
+data/calendar/
+
+# Output / cache
+output/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
