@@ -1,0 +1,8 @@
+# Life-ops Flask shell. No meme pipeline, Imgflip, video, or RAG deps.
+flask>=3.0.0
+gunicorn>=21.2.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+boto3>=1.34.0
+python-dateutil>=2.8.0
+pytest>=8.0.0
