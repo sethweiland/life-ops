@@ -238,10 +238,9 @@ class SpendProjectPageTests(unittest.TestCase):
             html = response.get_data(as_text=True)
             self.assertIn("By Project", html)
             self.assertIn("Unallocated", html)
-            self.assertIn("no usage yet", html)
-            self.assertIn("xAI / Grok API", html)
             self.assertIn('id="tokens"', html)
             self.assertIn("No token usage recorded this month.", html)
+            self.assertIn("xAI / application usage", html)
         finally:
             reset_s3_store()
             tmp.cleanup()

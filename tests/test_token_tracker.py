@@ -8,6 +8,7 @@ from unittest.mock import patch
 import tests.bootstrap  # noqa: F401
 
 from src.core.s3_store import BucketLayout, reset_s3_store
+from src.core.tenant import reset_tenant
 from src.core.token_tracker import (
     estimate_cost_usd,
     get_month_usage,
@@ -25,6 +26,7 @@ class _FrozenDateTime(datetime):
 
 class TokenTrackerTests(unittest.TestCase):
     def setUp(self):
+        reset_tenant()
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         self.store = MemoryS3Store()
@@ -46,6 +48,7 @@ class TokenTrackerTests(unittest.TestCase):
         for item in self.patches:
             item.stop()
         reset_s3_store()
+        reset_tenant()
         self.tmp.cleanup()
 
     def test_local_fallback_when_s3_unset(self):
@@ -140,12 +143,12 @@ class TokenTrackerTests(unittest.TestCase):
         self.assertEqual(usage["source"], "local")
         self.assertEqual(usage["call_count"], 1)
 
-    def test_default_project_is_memes(self):
+    def test_default_project_follows_tenant(self):
         log_token_usage("xai", "grok-4.6", 10, 5)
         raw, _etag = self.store.get_json(BucketLayout.usage_key("xai", 2026, 9))
-        self.assertEqual(raw["events"][0]["project"], "memes")
+        self.assertEqual(raw["events"][0]["project"], "home-ops")
         usage = get_month_usage("xai", 2026, 9)
-        self.assertEqual(usage["by_project"]["memes"]["call_count"], 1)
+        self.assertEqual(usage["by_project"]["home-ops"]["call_count"], 1)
         self.assertEqual(usage["legacy_untagged_xai_as_memes"], 0)
 
     def test_usage_project_env_override(self):
