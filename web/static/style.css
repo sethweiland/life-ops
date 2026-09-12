@@ -179,7 +179,8 @@ nav.subnav a.active { border-bottom-color: #81d4fa; }
 .project-expand > summary::marker { content: ""; }
 .project-expand-preview {
     min-width: 0;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
+    max-width: calc(100% - 52px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -189,9 +190,9 @@ nav.subnav a.active { border-bottom-color: #81d4fa; }
     color: #1a73e8;
     font-size: 12px;
     font-weight: 600;
-    padding: 6px 0;
+    padding: 6px 2px;
     min-width: 44px;
-    text-align: right;
+    text-align: left;
 }
 .project-expand-less { display: none; }
 .project-expand[open] > summary > :not(.project-expand-toggle) { display: none; }
