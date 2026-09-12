@@ -465,8 +465,8 @@ class ProjectsPageTests(unittest.TestCase):
         return match.group(0)
 
     def test_clipped_fields_get_expandable_markup(self):
-        long_summary = "Summary wall " + ("keep going " * 20)
-        long_next = "Next wall " + ("then another step " * 16)
+        long_summary = ("Summary wall " + ("keep going " * 20)).strip()
+        long_next = ("Next wall " + ("then another step " * 16)).strip()
         short_last = "Wrote the tenant seed"
         short_summary = "Fits on one line"
         self.board.save(
