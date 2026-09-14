@@ -424,9 +424,11 @@ writes the snapshot. Flask does not talk to Google.
    events stay in the snapshot and are not shown.
 6. Optional crests: if `ops/calendar/team-logos.json` (or the local
    fallback) has a `match` row whose `match_title_contains` needle appears
-   in an event title, Home shows that `logo_url` next to the title. Do not
-   scrape ESPN or invent fixtures. A missing map or unmatched title leaves
-   the row unchanged. IANA zone ids are still not printed.
+   in an event title, Home shows that `logo_url` next to the title.
+   Matching is substring, not exact (`UCLA` / `Liverpool` still hit titles
+   prefixed with 🏈 or ⚽). Do not scrape ESPN or invent fixtures. A
+   missing map or unmatched title leaves the row unchanged. IANA zone ids
+   are still not printed.
 
 Python helper: `CalendarStore.save(...)` / `CalendarStore.home_lists()`.
 

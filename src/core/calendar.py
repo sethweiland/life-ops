@@ -213,7 +213,11 @@ def normalize_team_logos(data: Any) -> Optional[dict[str, Any]]:
 
 
 def match_team_crest(title: str, logos: Optional[dict[str, Any]]) -> Optional[dict[str, Any]]:
-    """First map row whose match_title_contains needle is in the title."""
+    """First map row whose match_title_contains needle is a title substring.
+
+    Not an exact-title match. Sport emoji prefixes such as ``🏈`` / ``⚽``
+    still match because only the needle has to appear in the title.
+    """
     haystack = (title or "").casefold()
     if not haystack:
         return None
