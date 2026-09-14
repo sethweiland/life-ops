@@ -7,7 +7,7 @@ this app can share a bucket with ``sethweiland/memes`` without writing there.
     ops/tenant.yaml                                # private operator tenant (not in git)
     ops/projects/board.json                        # private project board
     ops/calendar/snapshot.json                     # private calendar snapshot (no OAuth)
-    ops/calendar/team-logos.json                   # optional Home crest map (title match)
+    ops/calendar/team-logos.json                   # optional Home crests + category map
     ops/spend/tech_spend.json                      # private operator spend ledger (not in git)
     ops/queue/x-activity/{YYYY-MM-DD}.json         # private X drafts
     ops/queue/daily-candidates/{YYYY-MM-DD}.json   # meme queue key (unused here)
